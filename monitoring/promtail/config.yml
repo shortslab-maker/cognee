@@ -23,7 +23,8 @@ scrape_configs:
           - localhost
         labels:
           job: lmstudio
-          __path__: /var/log/lmstudio/**/*.log
+          # Limit to current month to avoid ingesting large historical archive
+          __path__: /var/log/lmstudio/2026-03/*.log
   - job_name: cognee
     static_configs:
       - targets:
