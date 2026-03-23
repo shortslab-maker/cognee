@@ -1,0 +1,37 @@
+{
+  "dashboard": {
+    "id": null,
+    "uid": "cognee-lmstudio-logs",
+    "title": "CogneeMCP + LMStudio Logs",
+    "timezone": "browser",
+    "schemaVersion": 36,
+    "version": 1,
+    "panels": [
+      {
+        "type": "logs",
+        "title": "LMStudio Logs",
+        "gridPos": { "x": 0, "y": 0, "w": 24, "h": 8 },
+        "id": 1,
+        "targets": [
+          {
+            "expr": "{job=\"lmstudio\"} |= \"TEST_LOG\"",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "type": "logs",
+        "title": "Cognee MCP Logs",
+        "gridPos": { "x": 0, "y": 8, "w": 24, "h": 8 },
+        "id": 2,
+        "targets": [
+          {
+            "expr": "{job=\"cognee\"}",
+            "refId": "B"
+          }
+        ]
+      }
+    ]
+  },
+  "overwrite": false
+}
