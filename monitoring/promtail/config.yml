@@ -7,6 +7,14 @@ positions:
 
 clients:
   - url: http://loki:3100/loki/api/v1/push
+    # Reduce batch size and increase wait to avoid Loki ingestion rate limit (HTTP 429)
+    batchsize: 32768       # bytes per batch (32KB)
+    batchwait: 5s         # maximum time to wait before sending a batch
+    timeout: 10s
+    # Optional: tune retry/backoff if Loki returns 429
+    backoff_config:
+      min_period: 1s
+      max_period: 30s
 
 scrape_configs:
   - job_name: lmstudio
